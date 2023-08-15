@@ -50,15 +50,59 @@
 // Related Topics 数组 双指针 排序 👍 6238 👎 0
 
 package leetcode.editor.cn;
+import java.util.*;
+
 //Java：三数之和
 public class P15ThreeSum{
     public static void main(String[] args) {
         Solution solution = new P15ThreeSum().new Solution();
         // TO TEST
+        int[] nums = new int[]{0,0,0};
+        System.out.println(solution.threeSum(nums).toString());
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
+
+        List<List<Integer>> result = new ArrayList<>(new ArrayList<>());
+
+        int index = nums.length;  // 记录数组排序后，nums[i] 大于0的第一个下标，从左到右
+        // 将nums数组转化为List，纯手动转换
+        // 还有其他方法 ： 1、Arrays.asList：List<Integer> list = new ArrayList<>(Arrays.asList(nums));
+        // 2、List<Integer> list = Arrays.stream(nums).collect(Collectors.toList());
+        List<Integer> num_list = new ArrayList<>();
+        for (int i =0; i < nums.length; i++) {
+            if (nums[i] > 0) index = Integer.min(index, i); // 第一个大于0的nums元素下标
+            num_list.add(nums[i]);
+        }
+
+        // 如果数组全为大于0或者全为小于0， 则不满足3个相加等于0，返回空
+        if (index == 0 || (index == nums.length && nums[nums.length-1] < 0)) {
+            return new ArrayList<>();
+        }
+        // 如果全为0
+        if(index == nums.length && nums[nums.length-1] == 0) {
+
+            return result.add(new ArrayList<>(Arrays.asList()));
+        }
+
+        for (int i = 0; i < index; i++) {
+            for(int j = nums.length-1; j > i;j--) {
+                int k = j - 1;
+                while(j-- > i) {
+                    if(nums[i] + nums[j] + nums[k] == 0) {
+                        List<Integer> res = new ArrayList<Integer>();
+                        res.add(nums[i]);
+                        res.add(nums[j]);
+                        res.add(nums[k]);
+                        result.add(res);
+                    }
+                }
+
+            }
+        }
+
+        return result;
 
     }
 }
