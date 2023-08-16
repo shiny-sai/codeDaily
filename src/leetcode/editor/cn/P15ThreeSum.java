@@ -57,7 +57,7 @@ public class P15ThreeSum{
     public static void main(String[] args) {
         Solution solution = new P15ThreeSum().new Solution();
         // TO TEST
-        int[] nums = new int[]{0,0,0};
+        int[] nums = new int[]{1,0,-1};
         System.out.println(solution.threeSum(nums).toString());
     }
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -71,6 +71,8 @@ class Solution {
         // 还有其他方法 ： 1、Arrays.asList：List<Integer> list = new ArrayList<>(Arrays.asList(nums));
         // 2、List<Integer> list = Arrays.stream(nums).collect(Collectors.toList());
         List<Integer> num_list = new ArrayList<>();
+        Arrays.sort(nums);  // 先给nums排序
+        // 筛选出第一个大于0的元素的下标
         for (int i =0; i < nums.length; i++) {
             if (nums[i] > 0) index = Integer.min(index, i); // 第一个大于0的nums元素下标
             num_list.add(nums[i]);
@@ -80,23 +82,22 @@ class Solution {
         if (index == 0 || (index == nums.length && nums[nums.length-1] < 0)) {
             return new ArrayList<>();
         }
-        // 如果全为0
-        if(index == nums.length && nums[nums.length-1] == 0) {
 
-            return result.add(new ArrayList<>(Arrays.asList()));
-        }
 
         for (int i = 0; i < index; i++) {
             for(int j = nums.length-1; j > i;j--) {
                 int k = j - 1;
-                while(j-- > i) {
+                while(k > i) {
                     if(nums[i] + nums[j] + nums[k] == 0) {
                         List<Integer> res = new ArrayList<Integer>();
                         res.add(nums[i]);
-                        res.add(nums[j]);
                         res.add(nums[k]);
-                        result.add(res);
+                        res.add(nums[j]);
+                        Collections.sort(res);
+                        if (!result.contains(res))
+                            result.add(res);
                     }
+                    k--;
                 }
 
             }
