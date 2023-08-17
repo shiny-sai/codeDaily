@@ -83,10 +83,12 @@ class Solution {
             return new ArrayList<>();
         }
 
+        for (int i = 0; i < )
 
+        /*
         for (int i = 0; i < index; i++) {
             for(int j = nums.length-1; j > i;j--) {
-                int k = j - 1;
+                int k = j-1;
                 while(k > i) {
                     if(nums[i] + nums[j] + nums[k] == 0) {
                         List<Integer> res = new ArrayList<Integer>();
@@ -102,7 +104,7 @@ class Solution {
 
             }
         }
-
+    */
         return result;
 
     }
