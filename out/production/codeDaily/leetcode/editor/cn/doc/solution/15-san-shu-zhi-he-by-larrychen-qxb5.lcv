@@ -1,0 +1,129 @@
+# 题目
+
+[15. 三数之和](https://leetcode.cn/problems/3sum/description/)
+
+# 思路
+
+这里，我们直接给出通用解法，对于一个给定的数组 $nums$，从数组中选择 $n$ 个元素，使得其元素之和为 $target$。
+
+这里，我们以三数之和为例：$nums[i] + nums[j] + nums[k] = target$，比较朴素的做法是：
+
+- 先对数组 $nums$ 排序；
+
+- 然后，依次枚举第一个元素 $nums[i]$ 在数组 $nums$ 中的位置，即可将原始的问题转换为两数之和，即：$nums[j] + nums[k] = target - nums[i]$。
+
+四数之和、五数之和也可以采用类似的做法。
+
+对于**两数之和**，我们可以采用**双指针**的方式，对**排序**之后的数组，枚举每一个位置即可获得所有的结果。
+
+> 注意，通过双指针搜索的时候，需要跳过结果集中的重复元素。
+
+# 复杂度
+
+- 时间复杂度:  $O(nlogn + n)$
+
+  其中，排序的复杂度为 $O(nlogn)$，双指针查询的复杂度为 $O(n)$。
+
+- 空间复杂度:  $O(n)$
+
+# Code
+
+* []
+
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        return nSum(nums, 0, 3, 0);
+    }
+
+    private List<List<Integer>> twoSum(int[] nums, int startIndex, int endIndex, int target) {
+        // 计算两数之和
+        List<List<Integer>> result = new ArrayList<>();
+        int left = startIndex, right = endIndex;
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            int low = nums[left], high = nums[right];
+            if (sum == target) {
+                result.add(new ArrayList<>(Arrays.asList(nums[left], nums[right])));
+                // 跳过相同的元素
+                while (left < right && low == nums[left]) {
+                    left++;
+                }
+                while (left < right && high == nums[right]) {
+                    right--;
+                }
+            } else if (sum > target) {
+                right--;
+            } else {
+                left++;
+            }
+        }
+        return result;
+    }
+
+    private List<List<Integer>> nSum(int[] nums, int startIndex, int n, int target) {
+        List<List<Integer>> result;
+        int size = nums.length;
+        if (n < 2 || size < n) {
+            return new ArrayList<>();
+        }
+
+        if (n == 2) {
+            result = twoSum(nums, startIndex, size - 1, target);
+        } else {
+            result = new ArrayList<>();
+            // 枚举每一个位置，并转换为两数之和
+            for (int i = startIndex; i < size; i++) {
+                List<List<Integer>> current = nSum(nums, i + 1, n - 1, target - nums[i]);
+                for (List<Integer> candidate : current) {
+                    candidate.add(nums[i]);
+                    result.add(candidate);
+                }
+                // 跳过重复元素
+                while (i < size - 1 && nums[i] == nums[i + 1]) {
+                    i++;
+                }
+            }
+        }
+        return result;
+    }
+}
+```
+
+* []
+
+```Python
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        nums.sort()
+        result = list()
+        
+        # 枚举 a
+        for i in range(n):
+            # 需要和上一次枚举的数不相同
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            # c 对应的指针初始指向数组的最右端
+            k = n - 1
+            target = -nums[i]
+            # 枚举 b
+            for j in range(i + 1, n):
+                # 需要和上一次枚举的数不相同
+                if j > i + 1 and nums[j] == nums[j - 1]:
+                    continue
+                # 需要保证 b 的指针在 c 的指针的左侧
+                while j < k and nums[j] + nums[k] > target:
+                    k -= 1
+                # 如果指针重合，随着 b 后续的增加
+                # 就不会有满足 a+b+c=0 并且 b<c 的 c 了，可以退出循环
+                if j == k:
+                    break
+
+                if nums[j] + nums[k] == target:
+                    result.append([nums[i], nums[j], nums[k]])
+        
+        return result
+```
+
