@@ -3,6 +3,28 @@
   <component name="LeetcodeEditor">
     <option name="projectConfig">
       <map>
+        <entry key="$PROJECT_DIR$/out/leetcode/editor/cn/P15ThreeSum .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/out/leetcode/editor/cn/doc/content/P15ThreeSum .md" />
+              <option name="frontendQuestionId" value="leetcode.cn15" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/out/leetcode/editor/cn/P15ThreeSum .java" />
+              <option name="titleSlug" value="3sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/out/leetcode/editor/cn/P16ThreeSumClosest .java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/P16ThreeSumClosest.md" />
+              <option name="frontendQuestionId" value="leetcode.cn16" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/P16ThreeSumClosest.java" />
+              <option name="titleSlug" value="3sum-closest" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/leetcode/editor/cn/P10RegularExpressionMatching.java">
           <value>
             <LeetcodeEditor>
@@ -61,10 +83,10 @@
         <entry key="$PROJECT_DIR$/src/leetcode/editor/cn/P15ThreeSum.java">
           <value>
             <LeetcodeEditor>
-              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/P15ThreeSum.md" />
+              <option name="contentPath" value="$PROJECT_DIR$/out/leetcode/editor/cn/doc/content/P15ThreeSum .md" />
               <option name="frontendQuestionId" value="leetcode.cn15" />
               <option name="host" value="leetcode.cn" />
-              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/P15ThreeSum.java" />
+              <option name="path" value="$PROJECT_DIR$/out/leetcode/editor/cn/P15ThreeSum .java" />
               <option name="titleSlug" value="3sum" />
             </LeetcodeEditor>
           </value>
@@ -72,10 +94,21 @@
         <entry key="$PROJECT_DIR$/src/leetcode/editor/cn/P16ThreeSumClosest .java">
           <value>
             <LeetcodeEditor>
-              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/P16ThreeSumClosest .md" />
+              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/P16ThreeSumClosest.md" />
               <option name="frontendQuestionId" value="leetcode.cn16" />
               <option name="host" value="leetcode.cn" />
-              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/P16ThreeSumClosest .java" />
+              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/P16ThreeSumClosest.java" />
+              <option name="titleSlug" value="3sum-closest" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/leetcode/editor/cn/P16ThreeSumClosest.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/src/leetcode/editor/cn/doc/content/P16ThreeSumClosest.md" />
+              <option name="frontendQuestionId" value="leetcode.cn16" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/src/leetcode/editor/cn/P16ThreeSumClosest.java" />
               <option name="titleSlug" value="3sum-closest" />
             </LeetcodeEditor>
           </value>
