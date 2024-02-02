@@ -49,25 +49,7 @@ public class P18FourSum{
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public List<List<Integer>> fourSum(int[] nums, int target) {
-        int best = 100000;
-        for (int i = 0; i < nums.length; i++) {
-            if (i == 0 || nums[i] != nums[i-1]) {
-                for (int j = i+1; j < nums.length; j++) {
-                    if (j == i+1 || nums[j] != nums[j-1]){
-                        int l = nums.length - 1;
-                        for (int k = j+1; k < l; k++) {
-                            if (k == j+1 || nums[k] != nums[k-1]) {
-                                while(nums[i]+nums[j]+nums[k]+nums[l] < target) {
-                                    k++;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
