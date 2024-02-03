@@ -50,8 +50,12 @@ public class P18FourSum{
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
+<<<<<<< HEAD
     }
 
+=======
+}
+>>>>>>> 1ccd92f8b6f044b86d46c15dc5e2fdb426d8fc68
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
