@@ -39,27 +39,34 @@ public class P55JumpGame{
     public static void main(String[] args) {
         Solution solution = new P55JumpGame().new Solution();
         // TO TEST
-        int[] nums = new int[]{1,0,1,0};
+        int[] nums = new int[]{3,2,1,0,4};
         boolean flag = solution.canJump(nums);
         System.out.println(Boolean.toString(flag));
     }
         //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean canJump(int[] nums) {
-        int des = 0;
-        if (nums.length == 1) {
-            return true;
-        }
-        for (int i = 0; i < nums.length-1;) {
-            des = Math.max(des, nums[i]+i);
 
-            if (nums[i]+i < nums.length-1) {
-                i++;
-                des--;
-            } else {
-                return true;
+        if (nums.length == 1){
+            return true;
+        } else {
+            int[] dp = new int[nums.length];
+            for (int i = 0; i < nums.length; i++){
+                if (i == 0){
+                    dp[0] = nums[i];
+                } else {
+                    if (dp[i-1] >= i) {
+                        dp[i] = Math.max(dp[i-1], i + nums[i]);
+                    } else {
+                        return false;
+                    }
+                }
+                if (dp[i] >= nums.length-1) {
+                    return true;
+                }
             }
         }
+
         return false;
     }
 }
