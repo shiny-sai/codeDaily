@@ -48,57 +48,48 @@ public class P18FourSum{
     public static void main(String[] args) {
         Solution solution = new P18FourSum().new Solution();
         // TO TEST
-        int[] nums = new int[]{1,0,-1,0,-2,2};
-        System.out.println(solution.fourSum(nums, 8));
+        int[] nums = new int[]{-1,0,1,2,-1,-4};
+        System.out.println(solution.fourSum(nums, -1));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>(new ArrayList<>());
         Arrays.sort(nums);
-        int sum;
-        for (int i = 0; i < nums.length-1; i++) {
-                if (i > 0 && nums[i] == nums[i - 1]) {
-                    i++;
+        for (int a = 0; a < nums.length-1; a++) {
+            if (a > 0 && nums[a] == nums[a-1])
+                continue;
+            for (int b = a+1; b < nums.length-1; b++) {
+                if (b != a+1 && nums[b] == nums[b-1])
                     continue;
-                }
-                for(int j = i+1; j < nums.length-1; j++) {
-                    if (j > 0 && nums[j] == nums[j - 1]) {
-                        j++;
-                        continue;
-                    }
-                    int k = j + 1;
-                    int l = nums.length-1;
-                    sum = nums[j] + nums[k] + nums[l];
-
-                    while (k < l) {
+                int j = b+1;
+                int k = nums.length-1;
+                while(j < k) {
+                    // sum需要使用long类型，存在溢出
+                    long sum = (long)nums[a]+nums[b]+nums[j]+nums[k];
+                    if (sum == target) {
                         List<Integer> res = new ArrayList<>();
-                        sum = nums[j] + nums[k] + nums[l];
-                        if (sum == target - nums[i]) {
-                            res.add(nums[i]);
-                            res.add(nums[j]);
-                            res.add(nums[k]);
-                            res.add(nums[l]);
-                            if (!result.contains(res))
-                                result.add(res);
-                            k++;
-                            continue;
-                        }
-                        if (sum > target) {
-                            l--;
-                            while (nums[l] == nums[l + 1] && k < l)
-                                l--;
-
-                        }
-                        if (sum < target) {
-                            k++;
-                            while (nums[k] == nums[k - 1] && k < l)
-                                k++;
-                        }
+                        res.add(nums[a]);
+                        res.add(nums[b]);
+                        res.add(nums[j]);
+                        res.add(nums[k]);
+                        if (!result.contains(res))
+                            result.add(res);
+                        j++;
+                    }
+                    if (sum > target){
+                        k--;
+                        while(nums[k] == nums[k+1] && j < k)
+                            k--;
+                    }
+                    if (sum < target){
+                        j++;
+                        while (nums[j] == nums[j-1] && j < k)
+                            j++;
                     }
                 }
+            }
         }
-
         return result;
 
     }
