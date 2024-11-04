@@ -1,4 +1,4 @@
-package leetcode.editor.cn.test;
+package leetcode.editor.cn.test.binarysearch;
 
 public class P367IsPerfectSquare {
 
