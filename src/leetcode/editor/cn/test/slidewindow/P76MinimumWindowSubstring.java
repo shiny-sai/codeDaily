@@ -24,37 +24,13 @@ public class P76MinimumWindowSubstring {
      * @return 最小子串
      */
     public String minWindow(String s, String t) {
-        int slowIndex = 0;
-        int minLength = Integer.MAX_VALUE;
-        Map<Character, Integer> st = new HashMap<>();
-        for (int fastIndex = 0; fastIndex < s.length(); fastIndex++) {
-            if (isContain(t, s.charAt(fastIndex))) {
-                if (st.size() == 0) {
-                    // 前面那些t不包含的直接跳过
-                    slowIndex = fastIndex;
-                }
-                st.put(s.charAt(fastIndex), st.getOrDefault(s.charAt(fastIndex), 0) + 1);
-                if (s.charAt(fastIndex) == s.charAt(slowIndex)) {
-                    while (slowIndex < fastIndex) {
-                        if (!isContain(t, s.charAt(slowIndex))) {
-                            slowIndex++;
-                        } else if (st.get(s.charAt(slowIndex)) > 1) {
-                            st.put(s.charAt(slowIndex), st.get(s.charAt(slowIndex)) - 1);
-                            slowIndex++;
-                        } else {
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (st.size() == t.length()) {
-                // 说明完全覆盖到了t这个字符串
-                minLength = Math.min(minLength, fastIndex - slowIndex + 1);
-            }
+        if (s.length() < t.length()) {
+            return "";
         }
+        int slowIndex = 0, fastIndex = 0;
 
-        return s.substring(slowIndex, slowIndex+minLength);
+        return "";
+
     }
 
     public boolean isContain(String s, char a) {
