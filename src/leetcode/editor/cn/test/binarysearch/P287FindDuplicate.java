@@ -11,7 +11,7 @@ public class P287FindDuplicate {
 
     public static void main(String[] args) {
         P287FindDuplicate fd = new P287FindDuplicate();
-        int[] nums = new int[]{2,2,2,3};
+        int[] nums = new int[]{1,3,4,2,2};
         int res = fd.findDuplicate(nums);
         System.out.println(res);
     }
@@ -31,6 +31,11 @@ public class P287FindDuplicate {
         return -1;
     }
 
+    /**
+     * 二分查找寻找重复数
+     * @param nums 数组
+     * @return 返回重复数
+     */
     public int findDuplicate(int[] nums) {
         int n = nums.length;
         int l = 0, r = n - 1;
@@ -39,7 +44,7 @@ public class P287FindDuplicate {
             int cnt = 0;
             int mid = l + (r - l)/2;
             for (int i = 0; i < n; i++) {
-                if(nums[i] <= nums[mid]) {
+                if(nums[i] <= mid) {
                     cnt++;
                 }
             }
