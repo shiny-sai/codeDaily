@@ -16,7 +16,7 @@ public class P55CanJump {
     }
 
     /**
-     * 动态规划
+     * 贪心算法
      * @param nums
      * @return
      */
